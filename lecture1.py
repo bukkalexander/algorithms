@@ -1,15 +1,10 @@
-N = 0
-
-
-def interval_scheduling(intervals):
+def naive_interval_scheduling(intervals):
     # Select as many non-overlapping (disjoint) intervals as possible
     disjoint_intervals = set()
     return check_interval(intervals, disjoint_intervals)
 
 
 def check_interval(intervals, disjoint_intervals):
-    global N
-    N = N + 1
     max_candidate_solution = 0
     for interval in intervals:
         if not is_overlapping_any_interval(interval, disjoint_intervals):
@@ -31,7 +26,25 @@ def is_overlapping_any_interval(interval, interval_set):
     return False
 
 
+def eef_interval_scheduling(interval_list):
+    disjoint_interval_list = list()
+    interval_list.sort(key=lambda x: x[1])
+
+    f = 0  # interval end
+    for interval in interval_list:
+        if interval[0] < f:
+            continue
+        else:
+            disjoint_interval_list.append(interval)
+            f = interval[1]
+
+    return disjoint_interval_list
+
+
 def main():
+    # ==================================================================================================================
+    # Interval scheduling instance
+    # ==================================================================================================================
     intervals = {
         (0, 2),
         (1, 4),
@@ -47,12 +60,35 @@ def main():
     }
     print("Intervals:")
     print(intervals)
-    disjoint_intervals = interval_scheduling(intervals)
+
+    # ==================================================================================================================
+    # Naive interval scheduling
+    # ==================================================================================================================
+    print()
+    print("=" * 80)
+    print("Naive interval scheduling")
+    print("=" * 80)
+    disjoint_intervals = naive_interval_scheduling(intervals)
+    n_disjoint_intervals = len(disjoint_intervals)
+    print("\nMax number of disjoint intervals: " + str(n_disjoint_intervals))
+    print("Disjoint intervals:")
+    disjoint_intervals = list(disjoint_intervals)
+    disjoint_intervals.sort(key=lambda x: x[1])
+    print(disjoint_intervals)
+
+    # ==================================================================================================================
+    # EEF (earliest end first) interval scheduling
+    # ==================================================================================================================
+    print()
+    print("="*80)
+    print("EEF (earliest end first) interval scheduling")
+    print("=" * 80)
+    disjoint_intervals = eef_interval_scheduling(list(intervals))
     n_disjoint_intervals = len(disjoint_intervals)
     print("\nMax number of disjoint intervals: " + str(n_disjoint_intervals))
     print("Disjoint intervals:")
     print(disjoint_intervals)
-    print(str(N))
+
 
 if __name__ == "__main__":
     main()
