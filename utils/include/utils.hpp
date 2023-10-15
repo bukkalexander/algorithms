@@ -1,0 +1,1 @@
+void print_array(const int* a, int n);

@@ -2,18 +2,8 @@
 
 #include <iostream>
 
-void insertion_sort(int* a, int n)
+void merge_sort(int* a, int n)
 {
-    int j;
-    for (int i = 1; i < n; i++) {
-        int key = a[i];
-        j = i - 1;
-        while (j > -1 && a[j] > key) {
-            a[j + 1] = a[j];
-            j--; 
-        }
-        a[j + 1] = key;
-    }
 }
 
 int main() {
@@ -27,7 +17,7 @@ int main() {
     print_array(a, n);
 
     std::cout << "Sorting..." << std::endl;
-    insertion_sort(a, n);
+    merge_sort(a, n);
     std::cout << "a = ";
     print_array(a, n);
 
