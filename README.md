@@ -4,7 +4,7 @@ This repo contains C++ implementations of algorithms that I'm studying from the 
 ## Build
 
 ```bash
-./buld.sh
+./build.sh
 ```
 
 ## Run
