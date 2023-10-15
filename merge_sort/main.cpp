@@ -32,7 +32,7 @@ void sort(int* a, int i_start, int i_end) {
 
     // combine (merge)
     merge(a, i_start, i_mid, i_end);
-    std::cout << "combine" << "a[" << i_start << ":" << i_mid << "] and a[" << i_mid + 1 << ":" << i_end << "]" << std::endl;
+    std::cout << "merge a[" << i_start << ":" << i_mid << "] and a[" << i_mid + 1 << ":" << i_end << "]" << std::endl;
 }
 
 void merge(int* a, int i_start, int i_mid, int i_end) {
@@ -83,7 +83,6 @@ void merge(int* a, int i_start, int i_mid, int i_end) {
     }
 
     delete[] b;
-    std::cout << "hej"<< std::endl;
 
 }
 
@@ -102,6 +101,15 @@ int main() {
     std::cout << "a = ";
     print_array(a, n);
 
+    bool is_a_sorted = is_sorted(a, n);
+    std::cout << "is_a_sorted=";
+    if (is_a_sorted) {
+        std::cout << "true";
+    } else {
+        std::cout << "false";
+    }
+    std::cout << std::endl;
+    std::cout << "is_a_sorted=" << is_a_sorted << std::endl;
     std::cout << "================================================" << std::endl;
     return 0;
 }
