@@ -1,4 +1,12 @@
+# General
 .idea/
 .vscode/
 .cache/
-build/
+
+# project
+/build/
+/external/
+
+# Python
+.venv/
+__pycache__/
