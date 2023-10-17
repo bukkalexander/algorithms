@@ -1,9 +1,10 @@
+#!/usr/bin/env python
 import sys
-from python.cli import cli
+from python.cli import parser
 
 def main(argv):
-    parser = cli.create_parser()
-    args = parser.parse_args(argv)
+    pars = parser.create_parser()
+    args = pars.parse_args(argv)
     args.func(args)
 
 
