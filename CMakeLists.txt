@@ -12,3 +12,5 @@ add_subdirectory(${INSERTION_SORT_DIR_PATH})
 add_subdirectory(${MERGE_SORT_DIR_PATH})
 add_subdirectory(${UTILS_DIR_PATH})
 
+enable_testing()
+add_subdirectory(${MERGE_SORT_DIR_PATH}/test)
